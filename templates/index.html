@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XX 平均房价走势</title>
+    <style>
+        .datetime {
+            font-size: 16px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>XX 平均房价走势</h1>
+    <div class="datetime" id="datetime"></div>
+
+    <script>
+        function updateDateTime() {
+            var now = new Date();
+            var date = now.toLocaleDateString('en-US');
+            var time = now.toLocaleTimeString('en-US');
+            document.getElementById('datetime').textContent = '当前时间：' + date + ' ' + time;
+        }
+        setInterval(updateDateTime, 1000);
+        updateDateTime();
+    </script>
+    <img src="{{ image_path }}" alt="Main Image">
+</body>
+</html>
