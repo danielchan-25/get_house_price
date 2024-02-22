@@ -8,12 +8,10 @@ import logging
 # ------------------------------------------------------------- #
 # Date：2023-11-14
 # Author：陈某
-# Function：获取安X客中，某地的房价，每天23:30运行
+# Function：获取安XX中，某地的房价，每天23:30运行
 # ------------------------------------------------------------- #
 
-logging.basicConfig(level=logging.INFO,
-                    format='%(asctime)s - %(levelname)s - %(message)s',
-                    datefmt='%Y-%m-%d %H:%M:%S')
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
 logger = logging.getLogger()
 
 
@@ -36,10 +34,10 @@ def get_Data():
 def insert_db():
     logger.info('正在连接数据库...')
     date, price = get_Data()
-    conn = pymysql.connect(host='', user='', password='', database='HousePrice', port=3306)  # 具体信息自己填
+    conn = pymysql.connect(host='', user='', password='', database='HousePrice', port=3306)  # 填入数据库信息
     cursor = conn.cursor()
     logger.info('数据库连接成功!')
-    sql = f'INSERT INTO XY_HousePrice_1D (date,price) VALUES ("{date}","{price}");'
+    sql = f'INSERT INTO HousePrice (date,price) VALUES ("{date}","{price}");'
     cursor.execute(sql)
     conn.commit()
     cursor.fetchall()
